@@ -1,5 +1,10 @@
 import datetime
 import pytz
+import os
+
+# Функция для очистки консоли
+def cls():
+    os.system('cls' if os.name=='nt' else 'clear')
 
 # Функция для показа всех заметок на экране
 def Show_notes():
@@ -72,6 +77,7 @@ def Edit_note():
     
     tz = pytz.timezone("Europe/Moscow")
     while True: # Меню для редактирования
+        cls()
         print("Команды для выбора: ")
         print("1 / head - изменить заголовок")
         print("2 / note - изменить заметку")
@@ -145,7 +151,7 @@ def Remove_note():
     print("\nОперация выполнена!\n")
     file_write.close()
 
-def Find_note():    
+def Find_note():
     file = open("notes.csv", "r", encoding="utf-8")
     lines = file.readlines()
     while True:
@@ -166,8 +172,9 @@ def Find_note():
                 break 
 
 # Основная фукнция с пользовательским меню для управления процессом
-def work():    
+def work():
     while True:
+        cls()
         print("Консольная программа для заметок ")
         print("https://github.com/RussellMorryson ")
         print("#=================================================================================#")
@@ -183,27 +190,33 @@ def work():
         command = input("\nВведите команду: ")
     
         if command == "1" or command == "show":
+            cls()
             Show_notes()
             input("\nДля перехода в меню нажмите любую клавишу...\n")
       
         elif command == "2" or command == "add":
+            cls()
             Add_note()
             input("\nДля перехода в меню нажмите любую клавишу...\n")
       
         elif command == "3" or command == "edit":
+            cls()
             Edit_note()
             input("\nДля перехода в меню нажмите любую клавишу...\n")
     
         elif command == "4" or command == "remove":
+            cls()
             Show_notes()
             Remove_note()
             input("\nДля перехода в меню нажмите любую клавишу...\n")
         
         elif command == "5" or command == "find":
+            cls()
             Find_note()            
             input("\nДля перехода в меню нажмите любую клавишу...\n")
 
         elif command == "0" or command == "exit":
+            cls()
             print("\nДо встречи!")
             break
         else:
