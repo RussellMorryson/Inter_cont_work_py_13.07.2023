@@ -132,10 +132,25 @@ def Remove_note():
     print("\nОперация выполнена!\n")
     file_write.close()
 
-def Find_note():
-    print("Меню команд для поиска")
-    print("Меню команд для поиска")
-
+def Find_note():    
+    file = open("notes.csv", "r", encoding="utf-8")
+    lines = file.readlines()
+    while True:
+        count = 1
+        task = input("Введите текст для поиска: ")
+        if task.lower() in str(lines).lower():
+            print("Совпадение найдено: ")
+            for line in lines:
+                if task.lower() in line.lower():
+                    print(str(count) + " - " + line)
+                    count +=1
+                else:
+                    count +=1
+        else:
+            print("Совпадений не найдено!")
+            choice = input("Найти что то еще? Y / Нажмите любую клавишу для отмены: ")
+            if choice != "Y" or choice != "y":
+                break 
 
 # Основная фукнция с пользовательским меню для управления процессом
 def work():    
@@ -157,33 +172,30 @@ def work():
     
         if command == "1" or command == "show":
             Show_notes()
-            input("Для перехода в меню нажмите любую клавишу... ")
+            input("\nДля перехода в меню нажмите любую клавишу... ")
       
         elif command == "2" or command == "add":
             Add_note()
-            input("Для перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...")
       
         elif command == "3" or command == "edit":
             Edit_note()
-            input("Для перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...")
     
         elif command == "4" or command == "remove":
             Show_notes()
             Remove_note()
-            input("Для перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...")
         
         elif command == "5" or command == "find":
-            Find_note()
-            
-            input("Для перехода в меню нажмите любую клавишу...")
-
-
+            Find_note()            
+            input("\nДля перехода в меню нажмите любую клавишу...")
 
         elif command == "0" or command == "exit":
-            print("До встречи!")
+            print("\nДо встречи!")
             break
         else:
-            print("Некорректный ввод!")
+            print("\nНекорректный ввод!")
 
 # Точка входа
 work()
