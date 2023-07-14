@@ -6,10 +6,23 @@ def Show_notes():
     file = open("notes.csv", encoding="utf-8")
     show_lines = file.readlines()
     count = 1
+    word = ""
+    text = ""
     print("\nВсе заметки:\n")
+    print("№ \t Заголовок \t Заметка \t Дата сохранения")
     for line in show_lines:
-        print(str(count) + " - " + line)
+        text += str(count) + " \t "
+        for i in line:
+            if i != ";":
+                word +=i
+            else:
+                text += word + " \t "
+                word = ""
+        text += word + " \t "
+        print(text)
         count += 1
+        text = ""
+        word = ""
     file.close()
 
 # Функция для добавления заметки в файл
@@ -154,8 +167,7 @@ def Find_note():
 
 # Основная фукнция с пользовательским меню для управления процессом
 def work():    
-    while True:        
-        print("\n" * 100)
+    while True:
         print("Консольная программа для заметок ")
         print("https://github.com/RussellMorryson ")
         print("#=================================================================================#")
@@ -172,24 +184,24 @@ def work():
     
         if command == "1" or command == "show":
             Show_notes()
-            input("\nДля перехода в меню нажмите любую клавишу... ")
+            input("\nДля перехода в меню нажмите любую клавишу...\n")
       
         elif command == "2" or command == "add":
             Add_note()
-            input("\nДля перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...\n")
       
         elif command == "3" or command == "edit":
             Edit_note()
-            input("\nДля перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...\n")
     
         elif command == "4" or command == "remove":
             Show_notes()
             Remove_note()
-            input("\nДля перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...\n")
         
         elif command == "5" or command == "find":
             Find_note()            
-            input("\nДля перехода в меню нажмите любую клавишу...")
+            input("\nДля перехода в меню нажмите любую клавишу...\n")
 
         elif command == "0" or command == "exit":
             print("\nДо встречи!")
