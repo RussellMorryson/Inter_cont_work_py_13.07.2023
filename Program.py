@@ -164,12 +164,12 @@ def Find_note():
                     print(str(count) + " - " + line)
                     count +=1
                 else:
-                    count +=1
+                    count +=1            
         else:
             print("Совпадений не найдено!")
-            choice = input("Найти что то еще? Y / Нажмите любую клавишу для отмены: ")
-            if choice != "Y" or choice != "y":
-                break 
+        choice = input("\nНайти что то еще? Y / Нажмите любую клавишу для отмены: \n")
+        if choice != "Y" or choice != "y":
+            break
 
 # Основная фукнция с пользовательским меню для управления процессом
 def work():
